@@ -20,3 +20,6 @@ cat ./*/failed_login_data.txt | awk '{print $3}' | sort | uniq -c | awk 'match($
 # Use wrap contents, with the temporary file as the text input and hour-of-day distribution
 # headers/footers, into a chart .html
 ../bin/wrap_contents.sh "$Hour_file" ../html_components/hours_dist ./hours_dist.html
+
+# Delete the temporary file
+rm $Hour_file
