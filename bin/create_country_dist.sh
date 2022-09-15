@@ -8,3 +8,6 @@ computers_file=$1
 
 # Go into the directory that has been taken as an argument
 cd "$computers_dir" || exit
+
+## Concatenate the files containing failed log-in attempts from all computers
+cat ./*/failed_login_data.txt

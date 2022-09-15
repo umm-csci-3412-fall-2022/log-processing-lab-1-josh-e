@@ -9,7 +9,7 @@ computers_dir=$1
 # Go into the directory that has been taken as an argument
 cd "$computers_dir" || exit
 
-## Concatenate the files containing all failed log-in attempts
+## Concatenate the files containing failed log-in attempts from all computers
 ## Extract the time-of-day data in the third coloumn
 ## Sort the time-of-day data so that the uniq command works
 ## Count the number of occurences for each time of day

@@ -9,7 +9,7 @@ computers_dir=$1
 # Go into the directory that has been taken as an argument
 cd "$computers_dir" || exit
 
-## Concatenate the files containing all failed log-in attempts
+## Concatenate the files containing failed log-in attempts from all computers
 ## Extract the username data in the fourth column 
 ## Sort the usernames so that the uniq command works
 ## Count the number of occurances for each username
