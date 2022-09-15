@@ -7,7 +7,7 @@ Username_file=$(mktemp)
 client_dir=$1 
 
 # Go into the directory that has been taken as an argument
-cd $client_dir
+cd "$client_dir" || exit
 
 ## Concatenate the files containing all failed log-in attempts
 ## Extract the username data in the fourth column 
@@ -15,12 +15,12 @@ cd $client_dir
 ## Count the number of occurances for each username
 ## Structure the output in the form: data.addRow(['*username*', *occurances*});
 ## Put it into the temp file
-cat ./*/failed_login_data.txt | awk '{print $4}' | sort | uniq -c | awk 'match($0, / *([0-9]+) +([a-zA-Z0-9_\-]+)/, groups) {print "data.addRow([\x27" groups[2] "\x27, " groups[1] "]);"}' > $Username_file
+cat ./*/failed_login_data.txt | awk '{print $4}' | sort | uniq -c | awk 'match($0, / *([0-9]+) +([a-zA-Z0-9_\-]+)/, groups) {print "data.addRow([\x27" groups[2] "\x27, " groups[1] "]);"}' > "$Username_file"
 
 # Use wrap contents, with the temporary file as the text input and username distritribution 
 # headers/footers, into a pie chart .html
-../bin/wrap_contents.sh $Username_file ../html_components/username_dist ./username_dist.html
+../bin/wrap_contents.sh "$Username_file" ../html_components/username_dist ./username_dist.html
 
 # Delete the temporary file
-rm $Username_file
+rm "$Username_file"
 
