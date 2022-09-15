@@ -15,4 +15,8 @@ cd "$client_dir" || exit
 ## Count the number of occurences for each time of day
 ## Structure the output in the form: data.addRow(['*hour-of-day*', *occurances*});
 ## Put it into the temp file
-cat ./*/failed_login_data.txt | awk '{print $3}' | sort | uniq -c | awk ($0, / *([0-9]+) +([0-9]{2})/, groups) {print "data.addRow([\x27" groups[2] "\x27, " groups[1] "]);"}' > $Hour_file
+cat ./*/failed_login_data.txt | awk '{print $3}' | sort | uniq -c | awk 'match($0, / *([0-9]+) +([0-9]{2})/, groups) {print "data.addRow([\x27" groups[2] "\x27, " groups[1] "]);"}' > $Hour_file
+
+# Use wrap contents, with the temporary file as the text input and hour-of-day distribution
+# headers/footers, into a chart .html
+../bin/wrap_contents.sh "$Hour_file" ../html_components/hours_dist ./hours_dist.html
