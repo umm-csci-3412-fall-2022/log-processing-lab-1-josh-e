@@ -10,4 +10,5 @@ computers_file=$1
 cd "$computers_dir" || exit
 
 ## Concatenate the files containing failed log-in attempts from all computers
-cat ./*/failed_login_data.txt
+## Extract the country of origin data in the fifth column
+cat ./*/failed_login_data.txt | awk '{print $5}' 
