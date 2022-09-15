@@ -11,4 +11,6 @@ cd "$client_dir" || exit
 
 ## Concatenate the files containing all failed log-in attempts
 ## Extract the time-of-day data in the third coloumn
-cat ./*/failed_login_data.txt | awk '{print $3}' 
+## Sort the time-of-day data so that the uniq command works
+## Count the number of occurences for each time of day
+cat ./*/failed_login_data.txt | awk '{print $3}' | sort | uniq -c	
