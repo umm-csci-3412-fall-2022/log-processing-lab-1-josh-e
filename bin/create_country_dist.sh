@@ -13,4 +13,7 @@ cd "$computers_dir" || exit
 ## Concatenate the files containing failed log-in attempts from all computers
 ## Extract the IP address data in the fifth column
 ## Sort the IP address data so that the join function works
-cat ./*/failed_login_data.txt | awk '{print $5}' | sort > $IP_file 
+cat ./*/failed_login_data.txt | awk '{print $5}' | sort > $IP_file
+
+## Join temporary IP file with country IP address comparison group
+join $IP_file ../etc/country_IP_map.txt 
