@@ -4,7 +4,7 @@
 Country_file=$(mktemp)
 
 # Take the directory that we will be working out of as the only argument
-Client_file=$1
+computers_file=$1
 
 # Go into the directory that has been taken as an argument
-cd "$client_dir" || exit
+cd "$computers_dir" || exit
