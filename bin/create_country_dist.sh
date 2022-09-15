@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Make two temporary files for storing country origin
+# Make two temporary files for storing IP addresses and country origin
 Country_file=$(mktemp)
 IP_file=$(mktemp)
 
@@ -16,4 +16,5 @@ cd "$computers_dir" || exit
 cat ./*/failed_login_data.txt | awk '{print $5}' | sort > $IP_file
 
 ## Join temporary IP file with country IP address comparison group
-join $IP_file ../etc/country_IP_map.txt 
+## Sort the country data so that the uniq command works
+join $IP_file ../etc/country_IP_map.txt | sort | uniq -c 
