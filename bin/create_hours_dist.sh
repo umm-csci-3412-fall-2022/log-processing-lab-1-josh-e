@@ -8,3 +8,6 @@ client_dir=$1
 
 # Go into the directory that has been taken as an argument
 cd "$client_dir" || exit
+
+## Concatenate the files containing all failed log-in attempts
+cat ./*/failed_login_data.txt 
