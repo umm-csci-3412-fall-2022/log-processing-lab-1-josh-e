@@ -10,4 +10,5 @@ client_dir=$1
 cd "$client_dir" || exit
 
 ## Concatenate the files containing all failed log-in attempts
-cat ./*/failed_login_data.txt 
+## Extract the time-of-day data in the third coloumn
+cat ./*/failed_login_data.txt | awk '{print $3}' 
