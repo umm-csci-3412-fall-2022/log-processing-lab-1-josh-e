@@ -16,5 +16,7 @@ cd "$computers_dir" || exit
 cat ./*/failed_login_data.txt | awk '{print $5}' | sort > $IP_file
 
 ## Join temporary IP file with country IP address comparison group
+## Extract the country data from the 2nd coloumn 
 ## Sort the country data so that the uniq command works
-join $IP_file ../etc/country_IP_map.txt | sort | uniq -c 
+## Count the number of occurances for each country
+join $IP_file ../etc/country_IP_map.txt | awk {print $2} | sort | uniq -c  
