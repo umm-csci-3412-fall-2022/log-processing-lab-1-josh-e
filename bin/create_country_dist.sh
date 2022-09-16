@@ -20,4 +20,5 @@ cat ./*/failed_login_data.txt | awk '{print $5}' | sort > $IP_file
 ## Sort the country data so that the uniq command works
 ## Count the number of occurances for each country
 ## Structure the output in the form: data.addRow(['*country*', *ocurrances*]);
-join $IP_file ../etc/country_IP_map.txt | awk {print $2} | sort | uniq -c | awk 'match($0, / *([0-9]+) +([A-Z]{2})/, groups) {print "data.addRow([\x27" groups[2] "\x27, " groups[1] "]);"}' 
+## Put it into the country temp file
+join $IP_file ../etc/country_IP_map.txt | awk {print $2} | sort | uniq -c | awk 'match($0, / *([0-9]+) +([A-Z]{2})/, groups) {print "data.addRow([\x27" groups[2] "\x27, " groups[1] "]);"}' > $Country_file 
