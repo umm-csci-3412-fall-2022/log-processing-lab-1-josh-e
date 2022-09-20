@@ -25,7 +25,7 @@ join "$IP_file" ../etc/country_IP_map.txt | awk '{print $2}' | sort | uniq -c | 
 
 # Use wrap contents, with the temporary file as the text input and country distribution 
 # headers/footers, into a map .html
-../bin/wrap_contents.sh "$Country_file" ../html_components/country_dist ./country_dist.html
+../bin/wrap_contents.sh "$Country_file" ../html_components/country_dist country_dist.html
 
 # Delete the temporary files
 rm "$IP_file"
