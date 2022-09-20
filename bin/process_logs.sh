@@ -17,3 +17,13 @@ for arg in "$@"
 		./bin/process_client_logs.sh "$Failed_Passwords_dir"/"$Computer_dir"
 	done
 
+# Create a .html chart for username, hours, ad country distribution of 
+# failed password attempts
+./bin/create_username_dist.sh "$Failed_Passwords_dir"
+./bin/create_hours_dist.sh "$Failed_Passwords_dir"
+./bin/create_country_dist.sh "$Failed_Passwords_dir"
+
+# Wrap the charts for username, hours, and country distribution of
+# failed password attempts into one .html file
+./bin/assemble_report.sh "$Failed_Passwords_dir"
+
