@@ -19,7 +19,7 @@ cat ./*/failed_login_data.txt | awk '{print $4}' | sort | uniq -c | awk 'match($
 
 # Use wrap contents, with the temporary file as the text input and username distritribution 
 # headers/footers, into a pie chart .html
-../bin/wrap_contents.sh "$Username_file" ../html_components/username_dist username_dist.html
+"$OLDPWD"/bin/wrap_contents.sh "$Username_file" "$OLDPWD"/html_components/username_dist username_dist.html
 
 # Delete the temporary file
 rm "$Username_file"

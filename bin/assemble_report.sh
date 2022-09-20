@@ -15,7 +15,7 @@ cat country_dist.html hours_dist.html username_dist.html > "$Reports"
 
 # Use wrap contents, with the temporary file as the text input and summary plots
 # headers/footers, into one collected .html
-../bin/wrap_contents.sh "$Reports" ../html_components/summary_plots failed_login_summary.html
+"$OLDPWD"/bin/wrap_contents.sh "$Reports" "$OLDPWD"/html_components/summary_plots failed_login_summary.html
 
 # Remove the temporary file
 rm "$Reports"
